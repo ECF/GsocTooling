@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PdeTemplates
+Bundle-SymbolicName: org.eclipse.ecf.remoteservices.tooling.pde.templates;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.pde.ui,
+ org.eclipse.ui;bundle-version="3.105.0",
+ org.eclipse.core.resources;bundle-version="3.8.101"
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.pde.core.plugin

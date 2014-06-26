@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.pde.ui.pluginContent">
+      <wizard
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceHostWizard"
+            icon="icon/Remote Service.png"
+            id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard1"
+            java="true"
+            name="Time Service Host Template"
+            pureOSGi="true"
+            rcp="false"
+            requiresActivator="false"
+            ui-content="false">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.pde.ui.pluginContent">
+      <wizard
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceConsumerWizard"
+            icon="icon/Remote Service.png"
+            id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard2"
+            java="true"
+            name="Time Service Consumer Template"
+            pureOSGi="true"
+            rcp="false"
+            requiresActivator="false"
+            ui-content="false">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.pde.ui.pluginContent">
+      <wizard
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceDSConsumerWizard"
+            icon="icon/Remote Service.png"
+            id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard3"
+            java="true"
+            name="Time Serveice Declarative Service Template"
+            pureOSGi="true"
+            rcp="false"
+            requiresActivator="false"
+            ui-content="false">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.pde.ui.pluginContent">
+      <wizard
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceDsAsyncWizard"
+            icon="icon/Remote Service.png"
+            id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard4"
+            java="true"
+            name="Time Service Declarative Service Async Template"
+            pureOSGi="true"
+            rcp="false"
+            requiresActivator="false"
+            ui-content="false">
+      </wizard>
+   </extension>
+
+</plugin>
