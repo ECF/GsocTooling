@@ -6,11 +6,18 @@
  ******************************************************************************/
 package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+
 public class TimeServiceDSConsumerTemplate extends TemplateSection {
 
 	public String getSectionId() {
 
 		return "TimeServiceDSTemplate"; //$NON-NLS-1$
+	}
+
+	protected void updateModel(IProgressMonitor monitor) {
+		setManifestHeader(
+				"Service-Component", "OSGI-INF/timeservicecomponent.xml"); //$NON-NLS-1$ //$NON-NLS-2$]
 	}
 
 }
