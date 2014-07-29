@@ -49,12 +49,13 @@ public class $Activator$ implements BundleActivator {
 						props);
 	}
 	
-
+%if containerType == "ecf.genaric.server";
 	private Dictionary<String, Object> getRemoteServiceProperties() {
 		Dictionary<String,Object> props = new Hashtable<String,Object>();
 		props.put("service.exported.interfaces", "*");
 		props.put("service.exported.configs", "$containerType$");
 		props.put("ecf.generic.server.id","$containerId$");
+		props.put("ecf.generic.server.name", "$HostName$")
 		Properties properties = System.getProperties();
 		String config = properties.getProperty("service.exported.configs");
 		if (config != null) {
@@ -69,7 +70,18 @@ public class $Activator$ implements BundleActivator {
 		}
 		return props;
 	}
-
+ %endif
+ %if containerType == "ecf.r_osgi.peer"
+	 
+	 private Dictionary<String, Object> getRemoteServiceProperties(){
+		 Dictionary<String,Object> props = new Hashtable<String,Object>();
+		 props.put("service.exported.interfaces", "*");
+		 props.put("service.exported.configs","$containerType$");
+		 props.put("", "")
+	 }
+	 
+%endif	 
+	 
 
 
 	public void stop(BundleContext context) throws Exception {

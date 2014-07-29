@@ -15,14 +15,15 @@ import org.eclipse.pde.ui.templates.PluginReference;
 
 public class TimeServiceHostWizard extends NewPluginTemplateWizard implements
 		IPluginContentWizard {
-
+	
 	public void init(IFieldData data) {
 		super.init(data);
 		setWindowTitle(Messages.TimeServiceHostWizard_0);
 	}
 
 	public ITemplateSection[] createTemplateSections() {
-		return new ITemplateSection[] { new TimeServiceHostTemplate() };
+		
+		return new ITemplateSection[] {new TimeServiceHostTemplate()};
 
 	}
 
