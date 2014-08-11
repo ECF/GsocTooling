@@ -21,6 +21,15 @@ import org.osgi.service.remoteserviceadmin.RemoteServiceAdminListener;
 
 import com.mycorp.examples.timeservice.ITimeService;
 
+% Options in the template:
+% packageName
+% Activator
+% containerType
+% containerId
+% HostName
+% containerTypeGenaric
+% containerTypeR_OSGI
+
 public class $Activator$ implements BundleActivator {
 	
 	
@@ -49,13 +58,19 @@ public class $Activator$ implements BundleActivator {
 						props);
 	}
 	
-%if containerType == "ecf.genaric.server";
+%if containerTypeGenaric
+
 	private Dictionary<String, Object> getRemoteServiceProperties() {
 		Dictionary<String,Object> props = new Hashtable<String,Object>();
 		props.put("service.exported.interfaces", "*");
 		props.put("service.exported.configs", "$containerType$");
 		props.put("ecf.generic.server.id","$containerId$");
-		props.put("ecf.generic.server.name", "$HostName$")
+		props.put("ecf.generic.server.name", "$HostName$");
+		props.put("org.eclipse.ecf.provider.generic.port", "$genaricPort$");
+		props.put("ecf.generic.server.path", "$genaricPath$");
+		props.put("ecf.generic.server.keepAlive", "$genaricKeepAlive$");
+		props.put("ecf.generic.server.id", "$genaricId$");
+		props.put("ecf.generic.server.bindAddress", "$genaricBlindAdress$");
 		Properties properties = System.getProperties();
 		String config = properties.getProperty("service.exported.configs");
 		if (config != null) {
@@ -70,8 +85,9 @@ public class $Activator$ implements BundleActivator {
 		}
 		return props;
 	}
- %endif
- %if containerType == "ecf.r_osgi.peer"
+	
+% else	
+	%if containerTypeR_osgi
 	 
 	 private Dictionary<String, Object> getRemoteServiceProperties(){
 		 Dictionary<String,Object> props = new Hashtable<String,Object>();
@@ -80,6 +96,7 @@ public class $Activator$ implements BundleActivator {
 		 props.put("", "")
 	 }
 	 
+	 %endif
 %endif	 
 	 
 

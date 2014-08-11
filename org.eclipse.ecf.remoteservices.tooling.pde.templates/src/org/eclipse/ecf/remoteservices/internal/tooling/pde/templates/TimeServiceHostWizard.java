@@ -6,6 +6,7 @@
  ******************************************************************************/
 package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.pde.core.plugin.IPluginReference;
 import org.eclipse.pde.ui.IFieldData;
 import org.eclipse.pde.ui.IPluginContentWizard;
@@ -28,10 +29,10 @@ public class TimeServiceHostWizard extends NewPluginTemplateWizard implements
 	}
 
 	public String[] getImportPackages() {
+		
 		return new String[] {
 				"com.mycorp.examples.timeservice;version=\"1.0.0\"", //$NON-NLS-1$
-				"org.osgi.framework" }; //$NON-NLS-1$
-
+				"org.osgi.framework;version=\"1.3.0\"" }; //$NON-NLS-1$
 	}
 
 	public IPluginReference[] getDependencies(String schemaVersion) {
@@ -40,5 +41,4 @@ public class TimeServiceHostWizard extends NewPluginTemplateWizard implements
 				"org.eclipse.osgi.services.remoteserviceadmin", "1.5.0", 0); //$NON-NLS-1$ //$NON-NLS-2$
 		return dep;
 	}
-
 }
