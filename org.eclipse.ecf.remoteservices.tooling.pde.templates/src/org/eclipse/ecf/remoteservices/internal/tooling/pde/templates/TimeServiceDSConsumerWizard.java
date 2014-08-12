@@ -15,21 +15,28 @@ import org.eclipse.pde.ui.templates.NewPluginTemplateWizard;
 public class TimeServiceDSConsumerWizard extends NewPluginTemplateWizard
 		implements IPluginContentWizard {
 
+	@Override
 	public void init(IFieldData data) {
 		super.init(data);
 		setWindowTitle(Messages.TimeServiceDSConsumerWizard_0);
 	}
 
+	@Override
 	public ITemplateSection[] createTemplateSections() {
 		return new ITemplateSection[] { new TimeServiceDSConsumerTemplate() };
 
 	}
 
+	/**
+	 * @return the string array that contain the all imported bundles
+	 */
+	@Override
 	public String[] getImportPackages() {
 		return new String[] { "com.mycorp.examples.timeservice;version=\"[1.0.0,2.0.0)\"" }; //$NON-NLS-1$
 
 	}
 
+	@Override
 	public IPluginReference[] getDependencies(String schemaVersion) {
 		return new IPluginReference[0];
 	}

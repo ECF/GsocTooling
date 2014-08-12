@@ -35,7 +35,12 @@ public class $Activator$ implements BundleActivator {
 	
 	public void start(BundleContext context) throws Exception {
 
+		// If the verboseRemoteServiceAdmin system property is set
+		// then register debug listener
 		if (Boolean.getBoolean("verboseRemoteServiceAdmin")) {
+			// Register a RemoteServiceAdminListener so we can report to sdtout
+			// when a remote service has actually been successfully exported by
+			// the RSA implementation
 			RemoteServiceAdminListener rsListener = new RemoteServiceAdminListener() {
 
 				
@@ -48,11 +53,13 @@ public class $Activator$ implements BundleActivator {
 					}
 				}
 			};
+			// Register our listener as service via whiteboard pattern, and RemoteServiceAdmin will callback
 			context.registerService(RemoteServiceAdminListener.class.getName(),
 					rsListener, null);
 		}
+		// Create remote service properties...see createRemoteServiceProperties()
 		Dictionary<String, Object> props = getRemoteServiceProperties();
-
+		// Create MyTimeService impl and register/export as a remote service
 		ServiceRegistration<ITimeService> timeServiceRegistration = context
 				.registerService(ITimeService.class, new TimeServiceImpl(),
 						props);
@@ -61,6 +68,7 @@ public class $Activator$ implements BundleActivator {
 %if containerTypeGenaric
 
 	private Dictionary<String, Object> getRemoteServiceProperties() {
+	// This is the only required service property to trigger remote services
 		Dictionary<String,Object> props = new Hashtable<String,Object>();
 		props.put("service.exported.interfaces", "*");
 		props.put("service.exported.configs", "$containerType$");
@@ -87,16 +95,15 @@ public class $Activator$ implements BundleActivator {
 	}
 	
 % else	
-	%if containerTypeR_osgi
-	 
+	
 	 private Dictionary<String, Object> getRemoteServiceProperties(){
 		 Dictionary<String,Object> props = new Hashtable<String,Object>();
 		 props.put("service.exported.interfaces", "*");
 		 props.put("service.exported.configs","$containerType$");
-		 props.put("", "")
+		 props.put("ch.ethz.iks.r_osgi.port", "$Port$");
+		 return props;
 	 }
 	 
-	 %endif
 %endif	 
 	 
 

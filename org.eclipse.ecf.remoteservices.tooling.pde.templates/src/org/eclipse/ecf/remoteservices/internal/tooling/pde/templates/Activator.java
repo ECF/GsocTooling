@@ -11,19 +11,21 @@ import org.osgi.framework.BundleContext;
 
 public class Activator extends AbstractUIPlugin {
 
-	public static final String PLUGIN_ID = "org.eclipse.ecf.remoteservices.tooling.pdetemplates,ItimeService";
+	public static final String PLUGIN_ID = Messages.Activator_0;
 	private static Activator plugin;
 
 	public Activator() {
 
 	}
 
+	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 
 		super.start(bundleContext);
 		plugin = this;
 	}
 
+	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
 		plugin = null;
 		super.stop(bundleContext);

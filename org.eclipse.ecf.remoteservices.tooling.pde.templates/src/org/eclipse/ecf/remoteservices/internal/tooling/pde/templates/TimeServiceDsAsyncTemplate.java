@@ -10,11 +10,19 @@ import org.eclipse.core.runtime.IProgressMonitor;
 
 public class TimeServiceDsAsyncTemplate extends TemplateSection {
 
+	/**
+	 * @return the location of the template file
+	 */
+	@Override
 	public String getSectionId() {
 
 		return "TimeServiceDsAsyncTemplate"; //$NON-NLS-1$
 	}
 
+	/**
+	 * update and add service-component service header to the project manifest file
+	 */
+	@Override
 	protected void updateModel(IProgressMonitor monitor) {
 		setManifestHeader(
 				"Service-Component", "OSGI-INF/timeservicecomponentasync.xml"); //$NON-NLS-1$ //$NON-NLS-2$]

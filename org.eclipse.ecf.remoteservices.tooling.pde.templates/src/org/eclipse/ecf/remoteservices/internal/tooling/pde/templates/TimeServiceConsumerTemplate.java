@@ -8,6 +8,11 @@ package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates;
 
 public class TimeServiceConsumerTemplate extends TemplateSection {
 
+	/**
+	 * return the location of the section that contain the template
+	 * @return String that shows the section id
+	 */
+	@Override
 	public String getSectionId() {
 
 		return "TimeServiceConsumerTemplate"; //$NON-NLS-1$

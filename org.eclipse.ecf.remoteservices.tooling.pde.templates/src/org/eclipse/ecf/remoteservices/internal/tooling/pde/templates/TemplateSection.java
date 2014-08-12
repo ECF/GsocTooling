@@ -21,8 +21,16 @@ import org.osgi.framework.Bundle;
 
 public abstract class TemplateSection extends OptionTemplateSection {
 
+	/**
+	 *Package name of the template
+	 */
 	private String packageName;
 
+	/**
+     * Returns the location of the template
+     * @return    URL of the template location.
+     */
+	@Override
 	public URL getTemplateLocation() {
 		Bundle b = Activator.getDefault().getBundle();
 		String path = "/templates/" + getSectionId(); //$NON-NLS-1$
@@ -54,6 +62,7 @@ public abstract class TemplateSection extends OptionTemplateSection {
 		return buffer.toString().toLowerCase(Locale.ENGLISH);
 	}
 
+	@Override
 	protected void initializeFields(IFieldData data) {
 
 		String packageName = getFormattedPackageName(data.getId());
@@ -61,6 +70,7 @@ public abstract class TemplateSection extends OptionTemplateSection {
 		this.packageName = getFormattedPackageName(data.getId());
 	}
 
+	@Override
 	public void initializeFields(IPluginModelBase model) {
 		String id = model.getPluginBase().getId();
 		String packageName = getFormattedPackageName(id);
@@ -68,10 +78,12 @@ public abstract class TemplateSection extends OptionTemplateSection {
 		this.packageName = getFormattedPackageName(id);
 	}
 
+	@Override
 	public int getNumberOfWorkUnits() {
 		return super.getNumberOfWorkUnits() + 1;
 	}
 
+	@Override
 	public String getStringOption(String name) {
 		if (name.equals(KEY_PACKAGE_NAME)) {
 			return packageName;
@@ -89,16 +101,19 @@ public abstract class TemplateSection extends OptionTemplateSection {
 		return new String[0];
 	}
 
+	@Override
 	protected URL getInstallURL() {
 		// TODO Auto-generated method stub
 		return Activator.getDefault().getBundle().getEntry("/"); //$NON-NLS-1$
 	}
 
+	@Override
 	protected ResourceBundle getPluginResourceBundle() {
 
 		return Platform.getResourceBundle(Activator.getDefault().getBundle());
 	}
 
+	@Override
 	protected void updateModel(IProgressMonitor monitor) throws CoreException {
 		// TODO Auto-generated method stub
 
