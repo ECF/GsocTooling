@@ -13,6 +13,9 @@
             rcp="false"
             requiresActivator="false"
             ui-content="false">
+         <description>
+            create sample remote service host using  time service example provideed in com.mycorp.examples.timeservice  and register them with osgi low leval api wiht user prefferd service providor(ecf genaric or r-osgi).
+         </description>
       </wizard>
    </extension>
    <extension
@@ -27,6 +30,9 @@
             rcp="false"
             requiresActivator="false"
             ui-content="false">
+         <description>
+            create sample remote service client using  time service example provideed in com.mycorp.examples.timeservice  and register them with osgi low leval api wiht user prefferd service providor(ecf genaric or r-osgi).
+         </description>
       </wizard>
    </extension>
    <extension
@@ -41,6 +47,9 @@
             rcp="false"
             requiresActivator="false"
             ui-content="false">
+         <description>
+            create sample remote service using  time service example provideed in com.mycorp.examples.timeservice  and register them with declarative services
+         </description>
       </wizard>
    </extension>
    <extension
@@ -55,6 +64,9 @@
             rcp="false"
             requiresActivator="false"
             ui-content="false">
+         <description>
+            create sample remote service using  time service example provideed in com.mycorp.examples.timeservice  and register them with declarative services
+         </description>
       </wizard>
    </extension>
 
