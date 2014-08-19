@@ -15,15 +15,15 @@ import org.eclipse.pde.ui.templates.TemplateOption;
 public class TimeServiceHostTemplate extends TemplateSection {
 	
 	/**
-	 * holds the values that entered by the user to add them to template.
-	 * this variables decide that which service provider will be used to register
+	 * holds the values that enterd by the user to add them to template.
+	 * this varibles decide that which service provder will be used to register
 	 * the service
 	 */
 	private BooleanOption containerTypeGenaric;
 	private BooleanOption containerTypeR_osgi;
 	
 	/**
-	 * variables that holds information about the ecf generic service provider
+	 * variables that holds information about the ecf genaric service provider
 	 */
 	private TemplateOption genaricPort;
 	private TemplateOption genaricPath;
@@ -51,7 +51,7 @@ public class TimeServiceHostTemplate extends TemplateSection {
 
 	/**
 	 * add options to use to interact with the template using text fields and 
-	 * Several text fields
+	 * sevaral text fields
 	 */
 	private void setPageOPtions(){
 		Hostname = addOption(Messages.TimeServiceHostTemplate_0, Messages.TimeServiceHostTemplate_1, Messages.TimeServiceHostTemplate_2, 0);
@@ -73,8 +73,8 @@ public class TimeServiceHostTemplate extends TemplateSection {
 	}	
 	
 	/**
-	 * decide which options should be enabled and disabled upon different 
-	 * service provider
+	 * decide which options should be enabled and disabled upon diffrant 
+	 * service providor
 	 */
 	private void alterOptionGenaric(){
 		containerTypeGenaric.setEnabled(!containerTypeR_osgi.isSelected());
