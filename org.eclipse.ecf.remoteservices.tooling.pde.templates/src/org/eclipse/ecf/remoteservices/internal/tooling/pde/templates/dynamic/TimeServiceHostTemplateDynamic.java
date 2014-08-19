@@ -4,15 +4,17 @@
  * the Eclipse Public License v1.0 which accompanies this distribution, and is
  * available at http://www.eclipse.org/legal/epl-v10.html
  ******************************************************************************/
-package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates;
+package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.dynamic;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.pde.ui.templates.BooleanOption;
 import org.eclipse.pde.ui.templates.TemplateOption;
+import org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TemplateSection; 
+import org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.Messages;
 
-public class TimeServiceHostTemplate extends TemplateSection {
+public class TimeServiceHostTemplateDynamic extends TemplateSection {
 	
 	/**
 	 * holds the values that entered by the user to add them to template.
@@ -43,7 +45,7 @@ public class TimeServiceHostTemplate extends TemplateSection {
 	private TemplateOption Hostname;
 	private TemplateOption containerId;
 	
-	public TimeServiceHostTemplate() {
+	public TimeServiceHostTemplateDynamic() {
 		setPageCount(2);
 		setPageOPtions();
 		
@@ -105,7 +107,7 @@ public class TimeServiceHostTemplate extends TemplateSection {
 	@Override
 	public String getSectionId() {
 
-		return "TimeServiceHostTemplate"; //$NON-NLS-1$
+		return "TimeServiceHostTemplateDynamic"; //$NON-NLS-1$
 	}
 	
 	@Override
