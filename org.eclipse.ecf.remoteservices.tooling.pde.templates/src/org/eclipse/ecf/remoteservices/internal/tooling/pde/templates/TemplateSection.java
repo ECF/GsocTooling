@@ -46,6 +46,7 @@ public abstract class TemplateSection extends OptionTemplateSection {
 		return null;
 
 	}
+	//test
 
 	protected String getFormattedPackageName(String id) {
 		StringBuffer buffer = new StringBuffer();
