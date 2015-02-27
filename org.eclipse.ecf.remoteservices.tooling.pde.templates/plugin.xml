@@ -8,13 +8,13 @@
             icon="icon/Remote Service.png"
             id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard1"
             java="true"
-            name="Time Service Host Template"
+            name="%TSHWizard.name"
             pureOSGi="true"
             rcp="false"
             requiresActivator="false"
             ui-content="false">
          <description>
-            create sample remote service host using  time service example provideed in com.mycorp.examples.timeservice  and register them with osgi low leval api wiht user prefferd service providor(ecf genaric or r-osgi).
+            %TSHWizard.description
          </description>
       </wizard>
    </extension>
@@ -25,13 +25,13 @@
             icon="icon/Remote Service.png"
             id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard2"
             java="true"
-            name="Time Service Consumer Template"
+            name="%TSCWizard.name"
             pureOSGi="true"
             rcp="false"
             requiresActivator="false"
             ui-content="false">
          <description>
-            create sample remote service client using  time service example provideed in com.mycorp.examples.timeservice  and register them with osgi low leval api wiht user prefferd service providor(ecf genaric or r-osgi).
+            %TSCWizard.description
          </description>
       </wizard>
    </extension>
@@ -42,30 +42,30 @@
             icon="icon/Remote Service.png"
             id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard3"
             java="true"
-            name="Time Serveice Declarative Service Template"
+            name="%TSDSCWizard.name"
             pureOSGi="true"
             rcp="false"
             requiresActivator="false"
             ui-content="false">
          <description>
-            create sample remote service using  time service example provideed in com.mycorp.examples.timeservice  and register them with declarative services
+            %TSDSCWizard.description
          </description>
       </wizard>
    </extension>
    <extension
          point="org.eclipse.pde.ui.pluginContent">
       <wizard
-            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceDsAsyncWizard"
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceDSAsyncConsumerWizard"
             icon="icon/Remote Service.png"
             id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard4"
             java="true"
-            name="Time Service Declarative Service Async Template"
+            name="%TSDSAWizard.name"
             pureOSGi="true"
             rcp="false"
             requiresActivator="false"
             ui-content="false">
          <description>
-            create sample remote service using  time service example provideed in com.mycorp.examples.timeservice  and register them with declarative services
+            %TSDSAWizard.description
          </description>
       </wizard>
    </extension>

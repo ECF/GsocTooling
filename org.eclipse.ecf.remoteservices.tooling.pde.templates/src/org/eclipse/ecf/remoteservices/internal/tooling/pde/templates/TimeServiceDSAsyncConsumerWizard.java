@@ -12,7 +12,7 @@ import org.eclipse.pde.ui.IPluginContentWizard;
 import org.eclipse.pde.ui.templates.ITemplateSection;
 import org.eclipse.pde.ui.templates.NewPluginTemplateWizard;
 
-public class TimeServiceDsAsyncWizard extends NewPluginTemplateWizard implements
+public class TimeServiceDSAsyncConsumerWizard extends NewPluginTemplateWizard implements
 		IPluginContentWizard {
 
 	@Override
@@ -23,7 +23,7 @@ public class TimeServiceDsAsyncWizard extends NewPluginTemplateWizard implements
 
 	@Override
 	public ITemplateSection[] createTemplateSections() {
-		return new ITemplateSection[] { new TimeServiceDsAsyncTemplate() };
+		return new ITemplateSection[] { new TimeServiceDSAsyncConsumerTemplate() };
 
 	}
 

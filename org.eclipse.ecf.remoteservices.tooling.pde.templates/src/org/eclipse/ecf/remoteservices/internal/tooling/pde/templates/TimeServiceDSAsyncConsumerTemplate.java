@@ -8,7 +8,7 @@ package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 
-public class TimeServiceDsAsyncTemplate extends TemplateSection {
+public class TimeServiceDSAsyncConsumerTemplate extends TemplateSection {
 
 	/**
 	 * @return the location of the template file
@@ -16,7 +16,7 @@ public class TimeServiceDsAsyncTemplate extends TemplateSection {
 	@Override
 	public String getSectionId() {
 
-		return "TimeServiceDsAsyncTemplate"; //$NON-NLS-1$
+		return "TimeServiceDSAsyncConsumerTemplate"; //$NON-NLS-1$
 	}
 
 	/**

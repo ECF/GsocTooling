@@ -6,6 +6,10 @@
  ******************************************************************************/
 package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates;
 
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -23,6 +27,12 @@ public class Activator extends AbstractUIPlugin {
 
 		super.start(bundleContext);
 		plugin = this;
+		
+		Dictionary<String, String> props = new Hashtable<String, String>();
+		props.put("endpoint.id", "xxxx");
+		
+		bundleContext.registerService(AbstractUIPlugin.class, this, props);
+		
 	}
 
 	@Override
