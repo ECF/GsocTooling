@@ -9,96 +9,97 @@ package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
-import org.eclipse.pde.ui.templates.BooleanOption;
+import org.eclipse.pde.ui.templates.ComboChoiceOption;
 import org.eclipse.pde.ui.templates.TemplateOption;
 
 public class TimeServiceHostTemplate extends TemplateSection {
-	
+
+
+	public static final String OPT_SERVER_TYPE = "serverType";
+	public static final String OPT_SERVER_TYPE_GENERIC = "serverTypeGeneric";
+	public static final String OPT_HOST_NAME = "hostName";
+
 	/**
-	 * holds the values that entered by the user to add them to template.
-	 * this variables decide that which service provider will be used to register
-	 * the service
+	 * holds the values that entered by the user to add them to template. this
+	 * variable decides that which service provider will be used to register the
+	 * service
 	 */
-	private BooleanOption containerTypeGenaric;
-	private BooleanOption containerTypeR_osgi;
-	
+	private ComboChoiceOption serverType;
+
 	/**
 	 * variables that holds information about the ecf generic service provider
 	 */
-	private TemplateOption genaricPort;
-	private TemplateOption genaricPath;
-	private TemplateOption genaricId;
-	private TemplateOption genaricBlindAdress;
-	private TemplateOption genaricKeepAlive;
-	
+	private TemplateOption genericPort;
+	private TemplateOption genericPath;
+	private TemplateOption genericId;
+	private TemplateOption genericBindAdress;
+	private TemplateOption genericKeepAlive;
+
 	/**
 	 * variables that holds information about the r_osgi service provider
 	 */
 	private TemplateOption r_osgiPort;
 	private TemplateOption r_osgiInternals;
-	
+
 	/**
 	 * common variables for both generic and r_osgi providers
 	 */
 	private TemplateOption Hostname;
 	private TemplateOption containerId;
-	
+
+	private WizardPage page1;
+
+	private WizardPage page2;
+
 	public TimeServiceHostTemplate() {
-		setPageCount(2);
-		setPageOPtions();
-		
+		setPageCount(3);
+		setPageOptions();
 	}
 
 	/**
-	 * add options to use to interact with the template using text fields and 
+	 * add options to use to interact with the template using text fields and
 	 * Several text fields
 	 */
-	private void setPageOPtions(){
-		Hostname = addOption(Messages.TimeServiceHostTemplate_0, Messages.TimeServiceHostTemplate_1, Messages.TimeServiceHostTemplate_2, 0);
-		containerId = addOption("containerId", "containerId", //$NON-NLS-1$ //$NON-NLS-2$
-				"ecftcp://localhost:3288/server", 0); //$NON-NLS-1$
-		
-		containerTypeR_osgi = (BooleanOption)addOption(Messages.TimeServiceHostTemplate_3, Messages.TimeServiceHostTemplate_4, false, 0);
-		containerTypeGenaric = (BooleanOption)addOption(Messages.TimeServiceHostTemplate_5, Messages.TimeServiceHostTemplate_8,false, 0);
-		
-		genaricPort = addOption(Messages.TimeServiceHostTemplate_9, Messages.TimeServiceHostTemplate_10, Messages.TimeServiceHostTemplate_11, 0);
-		genaricPath = addOption(Messages.TimeServiceHostTemplate_12, Messages.TimeServiceHostTemplate_13, Messages.TimeServiceHostTemplate_14, 0);
-		genaricKeepAlive = addOption(Messages.TimeServiceHostTemplate_15, Messages.TimeServiceHostTemplate_16, Messages.TimeServiceHostTemplate_17, 0);
-		genaricId = addOption(Messages.TimeServiceHostTemplate_18, Messages.TimeServiceHostTemplate_19, Messages.TimeServiceHostTemplate_20, 0);
-		genaricBlindAdress = addOption(Messages.TimeServiceHostTemplate_21, Messages.TimeServiceHostTemplate_22, Messages.TimeServiceHostTemplate_23, 0);
-		
-		r_osgiPort = addOption(Messages.TimeServiceHostTemplate_24, Messages.TimeServiceHostTemplate_25, Messages.TimeServiceHostTemplate_26, 0);
-		r_osgiInternals = addOption(Messages.TimeServiceHostTemplate_27, Messages.TimeServiceHostTemplate_28, Messages.TimeServiceHostTemplate_29, 0);
-		
-	}	
-	
-	/**
-	 * decide which options should be enabled and disabled upon different 
-	 * service provider
-	 */
-	private void alterOptionGenaric(){
-		containerTypeGenaric.setEnabled(!containerTypeR_osgi.isSelected());
-		genaricPort.setEnabled(containerTypeGenaric.isSelected());
-		genaricPath.setEnabled(containerTypeGenaric.isSelected());
-		genaricKeepAlive.setEnabled(containerTypeGenaric.isSelected());
-		genaricId.setEnabled(containerTypeGenaric.isSelected());
-		genaricBlindAdress.setEnabled(containerTypeGenaric.isSelected());
-		
-		containerTypeR_osgi.setEnabled(!containerTypeGenaric.isSelected());
-		r_osgiPort.setEnabled(containerTypeR_osgi.isSelected());
-		r_osgiInternals.setEnabled(containerTypeR_osgi.isSelected());
-		
-	}
-	
-	@Override
-	public void addPages(Wizard wizard) {
-		WizardPage page = createPage(0);
-		page.setTitle(Messages.TimeServiceHostTemplate_6);
-		page.setDescription(Messages.TimeServiceHostTemplate_7);
-		wizard.addPage(page);
-		markPagesAdded();
+	private void setPageOptions() {
+		Hostname = addOption(OPT_HOST_NAME, Messages.TimeServiceHostTemplate_1, null, 0);
+		containerId = addOption("containerId", "Container Id", "ecftcp://localhost:3288/server", 0);
+		serverType = addComboChoiceOption(OPT_SERVER_TYPE, "Server Type", new String[][] {
+				{ OPT_SERVER_TYPE_GENERIC, "ECF Generic Server" }, { "serverTypeR_OSGi", "R_OSGi Server" } },
+				OPT_SERVER_TYPE_GENERIC, 0);
+
+		genericPort = addOption("genericPort", Messages.TimeServiceHostTemplate_10,
+				Messages.TimeServiceHostTemplate_11, 1);
+		genericPath = addOption("genericPath", Messages.TimeServiceHostTemplate_13,
+				Messages.TimeServiceHostTemplate_14, 1);
+		genericKeepAlive = addOption("genericKeepAlive", Messages.TimeServiceHostTemplate_16,
+				Messages.TimeServiceHostTemplate_17, 1);
+		genericId = addOption("genericId", Messages.TimeServiceHostTemplate_19, Messages.TimeServiceHostTemplate_20, 1);
+		genericBindAdress = addOption("genericBindAdress", Messages.TimeServiceHostTemplate_22,
+				Messages.TimeServiceHostTemplate_23, 1);
+
+		r_osgiPort = addOption("Port", Messages.TimeServiceHostTemplate_25, Messages.TimeServiceHostTemplate_26, 2);
+		r_osgiInternals = addOption("internals", Messages.TimeServiceHostTemplate_28,
+				Messages.TimeServiceHostTemplate_29, 2);
+
 	}
 
+	@Override
+	public void addPages(Wizard wizard) {
+		WizardPage page0 = createPage(0);
+		page0.setTitle(Messages.TimeServiceHostTemplate_6);
+		page0.setDescription(Messages.TimeServiceHostTemplate_7);
+		wizard.addPage(page0);
+		page1 = createPage(1);
+		page1.setTitle("Generic Server Options");
+		page1.setDescription("Generic Server Options");
+		wizard.addPage(page1);
+		page2 = createPage(2);
+		page2.setTitle("R_OSGi Options");
+		page2.setDescription("R_OSGi Options");
+		wizard.addPage(page2);
+		markPagesAdded();
+	}
+	
 	/**
 	 * @return section id that contains the template file
 	 */
@@ -107,7 +108,7 @@ public class TimeServiceHostTemplate extends TemplateSection {
 
 		return "TimeServiceHostTemplate"; //$NON-NLS-1$
 	}
-	
+
 	@Override
 	public void validateOptions(TemplateOption changed) {
 		if (changed == Hostname) {
@@ -116,21 +117,17 @@ public class TimeServiceHostTemplate extends TemplateSection {
 			} else {
 				resetPageState();
 			}
-		} else if (changed == containerTypeGenaric) {
-			alterOptionGenaric();
-		} else if (changed == containerTypeR_osgi) {
-			alterOptionGenaric();
 		}
 	}
-	
+
 	/**
 	 * update and add service headers of the project manifest file
 	 */
 	@Override
-	protected void updateModel(IProgressMonitor monitor){
-		setManifestHeader(Messages.TimeServiceHostTemplate_30, Messages.TimeServiceHostTemplate_31);
-		setManifestHeader(Messages.TimeServiceHostTemplate_32, Messages.TimeServiceHostTemplate_33);
-		setManifestHeader(Messages.TimeServiceHostTemplate_34, Messages.TimeServiceHostTemplate_35);
+	protected void updateModel(IProgressMonitor monitor) {
+		setManifestHeader("Bundle-RequiredExecutionEnvironment", "J2SE-1.5");
+		setManifestHeader("Bundle-Vendor", Messages.TimeServiceHostTemplate_33);
+		setManifestHeader("Bundle-ActivationPolicy", "lazy");
 	}
 
 }

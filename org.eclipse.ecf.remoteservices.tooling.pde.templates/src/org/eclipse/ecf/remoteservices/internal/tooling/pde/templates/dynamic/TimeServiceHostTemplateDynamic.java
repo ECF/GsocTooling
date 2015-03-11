@@ -21,17 +21,17 @@ public class TimeServiceHostTemplateDynamic extends TemplateSection {
 	 * this variables decide that which service provider will be used to register
 	 * the service
 	 */
-	private BooleanOption containerTypeGenaric;
+	private BooleanOption containerTypeGeneric;
 	private BooleanOption containerTypeR_osgi;
 	
 	/**
 	 * variables that holds information about the ecf generic service provider
 	 */
-	private TemplateOption genaricPort;
-	private TemplateOption genaricPath;
-	private TemplateOption genaricId;
-	private TemplateOption genaricBlindAdress;
-	private TemplateOption genaricKeepAlive;
+	private TemplateOption genericPort;
+	private TemplateOption genericPath;
+	private TemplateOption genericId;
+	private TemplateOption genericBindAdress;
+	private TemplateOption genericKeepAlive;
 	
 	/**
 	 * variables that holds information about the r_osgi service provider
@@ -61,13 +61,13 @@ public class TimeServiceHostTemplateDynamic extends TemplateSection {
 				"ecftcp://localhost:3288/server", 0); //$NON-NLS-1$
 		
 		containerTypeR_osgi = (BooleanOption)addOption(Messages.TimeServiceHostTemplate_3, Messages.TimeServiceHostTemplate_4, false, 0);
-		containerTypeGenaric = (BooleanOption)addOption(Messages.TimeServiceHostTemplate_5, Messages.TimeServiceHostTemplate_8,false, 0);
+		containerTypeGeneric = (BooleanOption)addOption(Messages.TimeServiceHostTemplate_5, Messages.TimeServiceHostTemplate_8,false, 0);
 		
-		genaricPort = addOption(Messages.TimeServiceHostTemplate_9, Messages.TimeServiceHostTemplate_10, Messages.TimeServiceHostTemplate_11, 0);
-		genaricPath = addOption(Messages.TimeServiceHostTemplate_12, Messages.TimeServiceHostTemplate_13, Messages.TimeServiceHostTemplate_14, 0);
-		genaricKeepAlive = addOption(Messages.TimeServiceHostTemplate_15, Messages.TimeServiceHostTemplate_16, Messages.TimeServiceHostTemplate_17, 0);
-		genaricId = addOption(Messages.TimeServiceHostTemplate_18, Messages.TimeServiceHostTemplate_19, Messages.TimeServiceHostTemplate_20, 0);
-		genaricBlindAdress = addOption(Messages.TimeServiceHostTemplate_21, Messages.TimeServiceHostTemplate_22, Messages.TimeServiceHostTemplate_23, 0);
+		genericPort = addOption(Messages.TimeServiceHostTemplate_9, Messages.TimeServiceHostTemplate_10, Messages.TimeServiceHostTemplate_11, 0);
+		genericPath = addOption(Messages.TimeServiceHostTemplate_12, Messages.TimeServiceHostTemplate_13, Messages.TimeServiceHostTemplate_14, 0);
+		genericKeepAlive = addOption(Messages.TimeServiceHostTemplate_15, Messages.TimeServiceHostTemplate_16, Messages.TimeServiceHostTemplate_17, 0);
+		genericId = addOption(Messages.TimeServiceHostTemplate_18, Messages.TimeServiceHostTemplate_19, Messages.TimeServiceHostTemplate_20, 0);
+		genericBindAdress = addOption(Messages.TimeServiceHostTemplate_21, Messages.TimeServiceHostTemplate_22, Messages.TimeServiceHostTemplate_23, 0);
 		
 		r_osgiPort = addOption(Messages.TimeServiceHostTemplate_24, Messages.TimeServiceHostTemplate_25, Messages.TimeServiceHostTemplate_26, 0);
 		r_osgiInternals = addOption(Messages.TimeServiceHostTemplate_27, Messages.TimeServiceHostTemplate_28, Messages.TimeServiceHostTemplate_29, 0);
@@ -78,15 +78,15 @@ public class TimeServiceHostTemplateDynamic extends TemplateSection {
 	 * decide which options should be enabled and disabled upon different 
 	 * service provider
 	 */
-	private void alterOptionGenaric(){
-		containerTypeGenaric.setEnabled(!containerTypeR_osgi.isSelected());
-		genaricPort.setEnabled(containerTypeGenaric.isSelected());
-		genaricPath.setEnabled(containerTypeGenaric.isSelected());
-		genaricKeepAlive.setEnabled(containerTypeGenaric.isSelected());
-		genaricId.setEnabled(containerTypeGenaric.isSelected());
-		genaricBlindAdress.setEnabled(containerTypeGenaric.isSelected());
+	private void alterOptionGeneric(){
+		containerTypeGeneric.setEnabled(!containerTypeR_osgi.isSelected());
+		genericPort.setEnabled(containerTypeGeneric.isSelected());
+		genericPath.setEnabled(containerTypeGeneric.isSelected());
+		genericKeepAlive.setEnabled(containerTypeGeneric.isSelected());
+		genericId.setEnabled(containerTypeGeneric.isSelected());
+		genericBindAdress.setEnabled(containerTypeGeneric.isSelected());
 		
-		containerTypeR_osgi.setEnabled(!containerTypeGenaric.isSelected());
+		containerTypeR_osgi.setEnabled(!containerTypeGeneric.isSelected());
 		r_osgiPort.setEnabled(containerTypeR_osgi.isSelected());
 		r_osgiInternals.setEnabled(containerTypeR_osgi.isSelected());
 		
@@ -118,10 +118,10 @@ public class TimeServiceHostTemplateDynamic extends TemplateSection {
 			} else {
 				resetPageState();
 			}
-		} else if (changed == containerTypeGenaric) {
-			alterOptionGenaric();
+		} else if (changed == containerTypeGeneric) {
+			alterOptionGeneric();
 		} else if (changed == containerTypeR_osgi) {
-			alterOptionGenaric();
+			alterOptionGeneric();
 		}
 	}
 	

@@ -9,9 +9,18 @@
             id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard1"
             java="true"
             name="%TSHWizard.name"
+            ui-content="false">
+         <description>
+            %TSHWizard.description
+         </description>
+      </wizard>
+      <wizard
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceHostWizard"
+            icon="icon/Remote Service.png"
+            id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard1.osgi"
+            java="true"
+            name="%TSHWizard.name"
             pureOSGi="true"
-            rcp="false"
-            requiresActivator="false"
             ui-content="false">
          <description>
             %TSHWizard.description
@@ -26,9 +35,18 @@
             id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard2"
             java="true"
             name="%TSCWizard.name"
+            ui-content="false">
+         <description>
+            %TSCWizard.description
+         </description>
+      </wizard>
+      <wizard
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceConsumerWizard"
+            icon="icon/Remote Service.png"
+            id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard2.osgi"
+            java="true"
+            name="%TSCWizard.name"
             pureOSGi="true"
-            rcp="false"
-            requiresActivator="false"
             ui-content="false">
          <description>
             %TSCWizard.description
@@ -43,9 +61,18 @@
             id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard3"
             java="true"
             name="%TSDSCWizard.name"
+            ui-content="false">
+         <description>
+            %TSDSCWizard.description
+         </description>
+      </wizard>
+      <wizard
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceDSConsumerWizard"
+            icon="icon/Remote Service.png"
+            id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard3.osgi"
+            java="true"
+            name="%TSDSCWizard.name"
             pureOSGi="true"
-            rcp="false"
-            requiresActivator="false"
             ui-content="false">
          <description>
             %TSDSCWizard.description
@@ -60,9 +87,18 @@
             id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard4"
             java="true"
             name="%TSDSAWizard.name"
+            ui-content="false">
+         <description>
+            %TSDSAWizard.description
+         </description>
+      </wizard>
+      <wizard
+            class="org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TimeServiceDSAsyncConsumerWizard"
+            icon="icon/Remote Service.png"
+            id="org.eclipse.ecf.RemoteServices.tooling.PdeTemplates.wizard4.osgi"
+            java="true"
+            name="%TSDSAWizard.name"
             pureOSGi="true"
-            rcp="false"
-            requiresActivator="false"
             ui-content="false">
          <description>
             %TSDSAWizard.description

@@ -27,7 +27,7 @@ import com.mycorp.examples.timeservice.ITimeService;
 % containerType
 % containerId
 % HostName
-% containerTypeGenaric
+% containerTypeGeneric
 % containerTypeR_OSGI
 
 public class $Activator$ implements BundleActivator {
@@ -65,7 +65,7 @@ public class $Activator$ implements BundleActivator {
 						props);
 	}
 	
-%if containerTypeGenaric
+%if containerTypeGeneric
 
 	private Dictionary<String, Object> getRemoteServiceProperties() {
 	// This is the only required service property to trigger remote services
@@ -74,11 +74,11 @@ public class $Activator$ implements BundleActivator {
 		props.put("service.exported.configs", "$containerType$");
 		props.put("ecf.generic.server.id","$containerId$");
 		props.put("ecf.generic.server.name", "$HostName$");
-		props.put("org.eclipse.ecf.provider.generic.port", "$genaricPort$");
-		props.put("ecf.generic.server.path", "$genaricPath$");
-		props.put("ecf.generic.server.keepAlive", "$genaricKeepAlive$");
-		props.put("ecf.generic.server.id", "$genaricId$");
-		props.put("ecf.generic.server.bindAddress", "$genaricBlindAdress$");
+		props.put("org.eclipse.ecf.provider.generic.port", "$genericPort$");
+		props.put("ecf.generic.server.path", "$genericPath$");
+		props.put("ecf.generic.server.keepAlive", "$genericKeepAlive$");
+		props.put("ecf.generic.server.id", "$genericId$");
+		props.put("ecf.generic.server.bindAddress", "$genericBindAdress$");
 		Properties properties = System.getProperties();
 		String config = properties.getProperty("service.exported.configs");
 		if (config != null) {

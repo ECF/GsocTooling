@@ -6,12 +6,15 @@
  ******************************************************************************/
 package org.eclipse.ecf.remoteservices.internal.tooling.pde.templates;
 
+import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.pde.core.plugin.IPluginReference;
 import org.eclipse.pde.ui.IFieldData;
 import org.eclipse.pde.ui.IPluginContentWizard;
 import org.eclipse.pde.ui.templates.ITemplateSection;
 import org.eclipse.pde.ui.templates.NewPluginTemplateWizard;
 import org.eclipse.pde.ui.templates.PluginReference;
+import org.eclipse.pde.ui.templates.TemplateOption;
 
 public class TimeServiceHostWizard extends NewPluginTemplateWizard implements
 		IPluginContentWizard {
@@ -46,5 +49,21 @@ public class TimeServiceHostWizard extends NewPluginTemplateWizard implements
 		dep[0] = new PluginReference(
 				"org.eclipse.osgi.services.remoteserviceadmin", "1.5.0", 0); //$NON-NLS-1$ //$NON-NLS-2$
 		return dep;
+	}
+	
+	@Override
+	public IWizardPage getNextPage(IWizardPage pPage) {
+		TimeServiceHostTemplate section = (TimeServiceHostTemplate) getTemplateSections()[0];
+		WizardPage page = section.getPage(0);
+		if(page == pPage){
+			IWizardPage nextPage = section.getPage(2);
+			String serverType = section.getValue(TimeServiceHostTemplate.OPT_SERVER_TYPE).toString();
+			if(serverType.equals("serverTypeGeneric")){
+				nextPage = section.getPage(1);
+			}
+			System.out.println(serverType);
+			return nextPage;
+		}
+		return null;
 	}
 }

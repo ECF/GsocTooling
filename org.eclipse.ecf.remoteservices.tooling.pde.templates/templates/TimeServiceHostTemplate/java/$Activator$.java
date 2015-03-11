@@ -1,10 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2013 Sakith Indula. All rights reserved. This
- * program and the accompanying materials are made available under the terms of
- * the Eclipse Public License v1.0 which accompanies this distribution, and is
- * available at http://www.eclipse.org/legal/epl-v10.html
- ******************************************************************************/
-
+/**
+ * This bundle activator registers an OSGi service with specific 
+ * service attributes. These attributes are picked up by 
+ * ECF's OSGi RSA implementation. 
+ */
 package $packageName$;
 
 import java.util.Dictionary;
@@ -25,46 +23,47 @@ import com.mycorp.examples.timeservice.ITimeService;
 % containerType
 % containerId
 % HostName
-% containerTypeGenaric
+% containerTypeGeneric
 % containerTypeR_OSGI
 
 public class $Activator$ implements BundleActivator {
 	
-	
 	public void start(BundleContext context) throws Exception {
-
+		registerRSAListener(context);
+		Dictionary<String, Object> props = getRemoteServiceProperties();
+		context.registerService(ITimeService.class, new TimeServiceImpl(), props);
+	}
+	
+	/**
+	 * Registers a RSA listener if requested.
+	 */
+	private void registerRSAListener(){
 		// If the verboseRemoteServiceAdmin system property is set
 		// then register debug listener
 		if (Boolean.getBoolean("verboseRemoteServiceAdmin")) {
+			
 			// Register a RemoteServiceAdminListener so we can report to sdtout
 			// when a remote service has actually been successfully exported by
 			// the RSA implementation
 			RemoteServiceAdminListener rsListener = new RemoteServiceAdminListener() {
-
 				
 				public void remoteAdminEvent(RemoteServiceAdminEvent event) {
 					if (event.getType() == RemoteServiceAdminEvent.EXPORT_REGISTRATION) {
 						System.out.println("Service Exported by RemoteServiceAdmin.  EndpointDescription Properties="
-										+ event.getExportReference()
-												.getExportedEndpoint()
-												.getProperties());
+										+ event.getExportReference().getExportedEndpoint().getProperties());
 					}
 				}
 			};
 			// Register our listener as service via whiteboard pattern, and RemoteServiceAdmin will callback
-			context.registerService(RemoteServiceAdminListener.class.getName(),
-					rsListener, null);
+			context.registerService(RemoteServiceAdminListener.class.getName(), rsListener, null);
 		}
-		// Create remote service properties...see createRemoteServiceProperties()
-		Dictionary<String, Object> props = getRemoteServiceProperties();
-		// Create MyTimeService impl and register/export as a remote service
-		ServiceRegistration<ITimeService> timeServiceRegistration = context
-				.registerService(ITimeService.class, new TimeServiceImpl(),
-						props);
-	}
-	
-%if containerTypeGenaric
 
+	}
+
+	/**
+	 * Returns a Dictionary with remote service properties.
+	 */
+%if containerTypeGeneric
 	private Dictionary<String, Object> getRemoteServiceProperties() {
 	// This is the only required service property to trigger remote services
 		Dictionary<String,Object> props = new Hashtable<String,Object>();
@@ -72,11 +71,11 @@ public class $Activator$ implements BundleActivator {
 		props.put("service.exported.configs", "$containerType$");
 		props.put("ecf.generic.server.id","$containerId$");
 		props.put("ecf.generic.server.name", "$HostName$");
-		props.put("org.eclipse.ecf.provider.generic.port", "$genaricPort$");
-		props.put("ecf.generic.server.path", "$genaricPath$");
-		props.put("ecf.generic.server.keepAlive", "$genaricKeepAlive$");
-		props.put("ecf.generic.server.id", "$genaricId$");
-		props.put("ecf.generic.server.bindAddress", "$genaricBlindAdress$");
+		props.put("org.eclipse.ecf.provider.generic.port", "$genericPort$");
+		props.put("ecf.generic.server.path", "$genericPath$");
+		props.put("ecf.generic.server.keepAlive", "$genericKeepAlive$");
+		props.put("ecf.generic.server.id", "$genericId$");
+		props.put("ecf.generic.server.bindAddress", "$genericBindAdress$");
 		Properties properties = System.getProperties();
 		String config = properties.getProperty("service.exported.configs");
 		if (config != null) {
@@ -91,9 +90,7 @@ public class $Activator$ implements BundleActivator {
 		}
 		return props;
 	}
-	
 % else	
-	
 	 private Dictionary<String, Object> getRemoteServiceProperties(){
 		 Dictionary<String,Object> props = new Hashtable<String,Object>();
 		 props.put("service.exported.interfaces", "*");
@@ -102,7 +99,7 @@ public class $Activator$ implements BundleActivator {
 		 return props;
 	 }
 	 
-%endif	 
+% endif	 
 	 
 
 
