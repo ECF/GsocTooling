@@ -15,7 +15,7 @@ import org.osgi.framework.BundleContext;
 
 public class Activator extends AbstractUIPlugin {
 
-	public static final String PLUGIN_ID = Messages.Activator_0;
+	public static final String PLUGIN_ID = MyNLS.Activator_0;
 	private static Activator plugin;
 
 	public Activator() {

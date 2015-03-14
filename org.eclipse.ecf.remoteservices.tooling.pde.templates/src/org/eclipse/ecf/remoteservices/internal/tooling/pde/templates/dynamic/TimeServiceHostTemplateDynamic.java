@@ -12,7 +12,7 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.pde.ui.templates.BooleanOption;
 import org.eclipse.pde.ui.templates.TemplateOption;
 import org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.TemplateSection; 
-import org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.Messages;
+import org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.MyNLS;
 
 public class TimeServiceHostTemplateDynamic extends TemplateSection {
 	
@@ -56,21 +56,21 @@ public class TimeServiceHostTemplateDynamic extends TemplateSection {
 	 * Several text fields
 	 */
 	private void setPageOPtions(){
-		Hostname = addOption(Messages.TimeServiceHostTemplate_0, Messages.TimeServiceHostTemplate_1, Messages.TimeServiceHostTemplate_2, 0);
+		Hostname = addOption(MyNLS.TSHT_0, MyNLS.TSHT_1, MyNLS.TSHT_2, 0);
 		containerId = addOption("containerId", "containerId", //$NON-NLS-1$ //$NON-NLS-2$
 				"ecftcp://localhost:3288/server", 0); //$NON-NLS-1$
 		
-		containerTypeR_osgi = (BooleanOption)addOption(Messages.TimeServiceHostTemplate_3, Messages.TimeServiceHostTemplate_4, false, 0);
-		containerTypeGeneric = (BooleanOption)addOption(Messages.TimeServiceHostTemplate_5, Messages.TimeServiceHostTemplate_8,false, 0);
+		containerTypeR_osgi = (BooleanOption)addOption(MyNLS.TSHT_3, MyNLS.TSHT_4, false, 0);
+		containerTypeGeneric = (BooleanOption)addOption(MyNLS.TSHT_5, MyNLS.TSHT_8,false, 0);
 		
-		genericPort = addOption(Messages.TimeServiceHostTemplate_9, Messages.TimeServiceHostTemplate_10, Messages.TimeServiceHostTemplate_11, 0);
-		genericPath = addOption(Messages.TimeServiceHostTemplate_12, Messages.TimeServiceHostTemplate_13, Messages.TimeServiceHostTemplate_14, 0);
-		genericKeepAlive = addOption(Messages.TimeServiceHostTemplate_15, Messages.TimeServiceHostTemplate_16, Messages.TimeServiceHostTemplate_17, 0);
-		genericId = addOption(Messages.TimeServiceHostTemplate_18, Messages.TimeServiceHostTemplate_19, Messages.TimeServiceHostTemplate_20, 0);
-		genericBindAdress = addOption(Messages.TimeServiceHostTemplate_21, Messages.TimeServiceHostTemplate_22, Messages.TimeServiceHostTemplate_23, 0);
+		genericPort = addOption(MyNLS.TSHT_9, MyNLS.TSHT_10, MyNLS.TSHT_11, 0);
+		genericPath = addOption(MyNLS.TSHT_12, MyNLS.TSHT_13, MyNLS.TSHT_14, 0);
+		genericKeepAlive = addOption(MyNLS.TSHT_15, MyNLS.TSHT_16, MyNLS.TSHT_17, 0);
+		genericId = addOption(MyNLS.TSHT_18, MyNLS.TSHT_19, MyNLS.TSHT_20, 0);
+		genericBindAdress = addOption(MyNLS.TSHT_21, MyNLS.TSHT_22, MyNLS.TSHT_23, 0);
 		
-		r_osgiPort = addOption(Messages.TimeServiceHostTemplate_24, Messages.TimeServiceHostTemplate_25, Messages.TimeServiceHostTemplate_26, 0);
-		r_osgiInternals = addOption(Messages.TimeServiceHostTemplate_27, Messages.TimeServiceHostTemplate_28, Messages.TimeServiceHostTemplate_29, 0);
+		r_osgiPort = addOption(MyNLS.TSHT_24, MyNLS.TSHT_25, MyNLS.TSHT_26, 0);
+		r_osgiInternals = addOption(MyNLS.TSHT_27, MyNLS.TSHT_28, MyNLS.TSHT_29, 0);
 		
 	}	
 	
@@ -95,8 +95,8 @@ public class TimeServiceHostTemplateDynamic extends TemplateSection {
 	@Override
 	public void addPages(Wizard wizard) {
 		WizardPage page = createPage(0);
-		page.setTitle(Messages.TimeServiceHostTemplate_6);
-		page.setDescription(Messages.TimeServiceHostTemplate_7);
+		page.setTitle(MyNLS.TSHT_6);
+		page.setDescription(MyNLS.TSHT_7);
 		wizard.addPage(page);
 		markPagesAdded();
 	}
@@ -130,9 +130,9 @@ public class TimeServiceHostTemplateDynamic extends TemplateSection {
 	 */
 	@Override
 	protected void updateModel(IProgressMonitor monitor){
-		setManifestHeader(Messages.TimeServiceHostTemplate_30, Messages.TimeServiceHostTemplate_31);
-		setManifestHeader(Messages.TimeServiceHostTemplate_32, Messages.TimeServiceHostTemplate_33);
-		setManifestHeader(Messages.TimeServiceHostTemplate_34, Messages.TimeServiceHostTemplate_35);
+		setManifestHeader(MyNLS.TSHT_30, MyNLS.TSHT_31);
+		setManifestHeader(MyNLS.TSHT_32, MyNLS.TSHT_33);
+		setManifestHeader(MyNLS.TSHT_34, MyNLS.TSHT_35);
 	}
 
 }

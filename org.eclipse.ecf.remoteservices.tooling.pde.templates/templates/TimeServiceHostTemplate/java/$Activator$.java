@@ -37,7 +37,7 @@ public class $Activator$ implements BundleActivator {
 	/**
 	 * Registers a RSA listener if requested.
 	 */
-	private void registerRSAListener(){
+	private void registerRSAListener(BundleContext context){
 		// If the verboseRemoteServiceAdmin system property is set
 		// then register debug listener
 		if (Boolean.getBoolean("verboseRemoteServiceAdmin")) {
@@ -68,7 +68,8 @@ public class $Activator$ implements BundleActivator {
 	// This is the only required service property to trigger remote services
 		Dictionary<String,Object> props = new Hashtable<String,Object>();
 		props.put("service.exported.interfaces", "*");
-		props.put("service.exported.configs", "$containerType$");
+		if("$containerType$".length() > 0)
+			props.put("service.exported.configs", "$containerType$");
 		props.put("ecf.generic.server.id","$containerId$");
 		props.put("ecf.generic.server.name", "$HostName$");
 		props.put("org.eclipse.ecf.provider.generic.port", "$genericPort$");
@@ -90,6 +91,7 @@ public class $Activator$ implements BundleActivator {
 		}
 		return props;
 	}
+
 % else	
 	 private Dictionary<String, Object> getRemoteServiceProperties(){
 		 Dictionary<String,Object> props = new Hashtable<String,Object>();
@@ -100,12 +102,6 @@ public class $Activator$ implements BundleActivator {
 	 }
 	 
 % endif	 
-	 
-
-
 	public void stop(BundleContext context) throws Exception {
-		// TODO Auto-generated method stub
-
 	}
-
 }

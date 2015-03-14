@@ -18,7 +18,7 @@ public class TimeServiceDSAsyncConsumerWizard extends NewPluginTemplateWizard im
 	@Override
 	public void init(IFieldData data) {
 		super.init(data);
-		setWindowTitle(Messages.TimeServiceDsAsyncWizard_0);
+		setWindowTitle(MyNLS.TSDAW_0);
 	}
 
 	@Override

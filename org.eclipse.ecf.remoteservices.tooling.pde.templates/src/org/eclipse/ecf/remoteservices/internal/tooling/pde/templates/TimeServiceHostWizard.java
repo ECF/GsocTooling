@@ -22,7 +22,7 @@ public class TimeServiceHostWizard extends NewPluginTemplateWizard implements
 	@Override
 	public void init(IFieldData data) {
 		super.init(data);
-		setWindowTitle(Messages.TimeServiceHostWizard_0);
+		setWindowTitle(MyNLS.TSHW_0);
 	}
 
 	@Override

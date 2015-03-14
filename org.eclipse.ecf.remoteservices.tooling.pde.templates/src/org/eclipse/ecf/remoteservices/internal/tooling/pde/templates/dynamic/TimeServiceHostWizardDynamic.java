@@ -12,7 +12,7 @@ import org.eclipse.pde.ui.IPluginContentWizard;
 import org.eclipse.pde.ui.templates.ITemplateSection;
 import org.eclipse.pde.ui.templates.NewPluginTemplateWizard;
 import org.eclipse.pde.ui.templates.PluginReference; 
-import org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.Messages;
+import org.eclipse.ecf.remoteservices.internal.tooling.pde.templates.MyNLS;
 
 public class TimeServiceHostWizardDynamic extends NewPluginTemplateWizard implements
 		IPluginContentWizard {
@@ -20,7 +20,7 @@ public class TimeServiceHostWizardDynamic extends NewPluginTemplateWizard implem
 	@Override
 	public void init(IFieldData data) {
 		super.init(data);
-		setWindowTitle(Messages.TimeServiceHostWizard_0);
+		setWindowTitle(MyNLS.TSHW_0);
 	}
 
 	@Override
